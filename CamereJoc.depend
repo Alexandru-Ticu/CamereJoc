@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1523998839 source:c:\users\obbya\onedrive\scoala\asd2\camerejoc\camerejoc\listasimpluinlantuita.cpp
+	"ListaSimpluInlantuita.h"
+	<iostream>
+
+1522750647 c:\users\obbya\onedrive\scoala\asd2\camerejoc\camerejoc\listasimpluinlantuita.h
+	"NodLS.h"
+
+1522748787 c:\users\obbya\onedrive\scoala\asd2\camerejoc\camerejoc\nodls.h
+	<iostream>
+
+1522751092 source:c:\users\obbya\onedrive\scoala\asd2\camerejoc\camerejoc\nodls.cpp
+	"NodLS.h"
+	<iostream>
+
+1523998536 source:c:\users\obbya\onedrive\scoala\asd2\camerejoc\camerejoc\main.cpp
+	<iostream>
+	"ListaSimpluInlantuita.h"
+
+1524090927 source:c:\users\obby\desktop\scoala\asd2\camerejoc\listasimpluinlantuita.cpp
+	"ListaSimpluInlantuita.h"
+	<iostream>
+
+1524090332 c:\users\obby\desktop\scoala\asd2\camerejoc\listasimpluinlantuita.h
+	"NodLS.h"
+
+1522745188 c:\users\obby\desktop\scoala\asd2\camerejoc\nodls.h
+	<iostream>
+
+1524087277 source:c:\users\obby\desktop\scoala\asd2\camerejoc\nodls.cpp
+	"NodLS.h"
+	<iostream>
+
+1524090965 source:c:\users\obby\desktop\scoala\asd2\camerejoc\main.cpp
+	<iostream>
+	"ListaSimpluInlantuita.h"
+
