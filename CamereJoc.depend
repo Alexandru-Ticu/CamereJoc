@@ -35,3 +35,78 @@
 	<iostream>
 	"ListaSimpluInlantuita.h"
 
+1526332323 source:c:\users\obby\desktop\asd2\camerejoc-master\listasimpluinlantuita.cpp
+	"ListaSimpluInlantuita.h"
+	<iostream>
+
+1526331006 c:\users\obby\desktop\asd2\camerejoc-master\listasimpluinlantuita.h
+	"NodLS.h"
+
+1526331053 c:\users\obby\desktop\asd2\camerejoc-master\nodls.h
+	"Inamic.h"
+	<iostream>
+
+1526353865 source:c:\users\obby\desktop\asd2\camerejoc-master\main.cpp
+	<iostream>
+	"NodLS.h"
+	"ListaSimpluInlantuita.h"
+	"Caracter.h"
+	"Inamic.h"
+	<stdlib.h>
+	<string.h>
+	"NodAb.h"
+	"ArboreBinar.h"
+	"Stiva.h"
+
+1526331402 source:c:\users\obby\desktop\asd2\camerejoc-master\nodls.cpp
+	"NodLS.h"
+	<iostream>
+	"Inamic.h"
+
+1526327270 source:c:\users\obby\desktop\asd2\camerejoc-master\inamic.cpp
+	"Inamic.h"
+	<iostream>
+
+1526340975 c:\users\obby\desktop\asd2\camerejoc-master\inamic.h
+	<iostream>
+
+1526354072 source:c:\users\obby\desktop\asd2\camerejoc-master\caracter.cpp
+	"Caracter.h"
+	<iostream>
+
+1526352590 c:\users\obby\desktop\asd2\camerejoc-master\caracter.h
+	<iostream>
+	"NodST.h"
+	"Stiva.h"
+
+1526346911 source:c:\users\obby\desktop\asd2\camerejoc-master\arborebinar.cpp
+	"ArboreBinar.h"
+	"NodAB.h"
+	<iostream>
+
+1526346203 c:\users\obby\desktop\asd2\camerejoc-master\arborebinar.h
+	"NodAB.h"
+
+1526341797 c:\users\obby\desktop\asd2\camerejoc-master\nodar.h
+	"ArboreBinar.h"
+
+1526345377 c:\users\obby\desktop\asd2\camerejoc-master\nodab.h
+	<iostream>
+
+1526346624 source:c:\users\obby\desktop\asd2\camerejoc-master\nodab.cpp
+	"NodAB.h"
+	<iostream>
+
+1526354072 source:c:\users\obby\desktop\asd2\camerejoc-master\stiva.cpp
+	"Stiva.h"
+
+1526354072 c:\users\obby\desktop\asd2\camerejoc-master\stiva.h
+	"NodST.h"
+
+1526350342 source:c:\users\obby\desktop\asd2\camerejoc-master\nodst.cpp
+	"NodST.h"
+	<iostream>
+
+1526354082 c:\users\obby\desktop\asd2\camerejoc-master\nodst.h
+	<iostream>
+

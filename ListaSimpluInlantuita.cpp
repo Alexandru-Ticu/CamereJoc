@@ -4,14 +4,14 @@
 using namespace std;
 
 ListaSimpluInlantuita::ListaSimpluInlantuita(){
-    cout<<"Apel constructor implicit: "<<this;
+//    cout<<"Apel constructor implicit: "<<this;
     this->sfarsit = new NodLS(NULL, 2);
     this->inceput = new NodLS(this->sfarsit, 1);
-    cout<<" Apel constructor implicit incheiat"<<endl;
+//    cout<<" Apel constructor implicit incheiat"<<endl;
 }
 
 ListaSimpluInlantuita::ListaSimpluInlantuita(NodLS *_inceput, NodLS *_sfarsit){
-    cout<<"Apel constructor explicit: "<<this;
+//    cout<<"Apel constructor explicit: "<<this;
     if(_inceput != NULL)
     {
         this->inceput = _inceput;
@@ -21,7 +21,7 @@ ListaSimpluInlantuita::ListaSimpluInlantuita(NodLS *_inceput, NodLS *_sfarsit){
         this->sfarsit = _sfarsit;
         this->sfarsit->urmator = NULL;
     }
-    cout<<" Apel constructor explicit incheiat"<<endl;
+//    cout<<" Apel constructor explicit incheiat"<<endl;
 }
 
 ListaSimpluInlantuita::ListaSimpluInlantuita(const ListaSimpluInlantuita &_deCopiat){
@@ -44,7 +44,7 @@ ListaSimpluInlantuita::ListaSimpluInlantuita(const ListaSimpluInlantuita &_deCop
 }
 
 ListaSimpluInlantuita::~ListaSimpluInlantuita(){
-    cout<<"Apel destructor: "<<this;
+//    cout<<"Apel destructor: "<<this;
     NodLS *nod;
     NodLS *aux;
     if(this->inceput != NULL && this->sfarsit!= NULL)
@@ -62,7 +62,7 @@ ListaSimpluInlantuita::~ListaSimpluInlantuita(){
     }
     this->inceput = NULL;
     this->sfarsit = NULL;
-    cout<<" Apel destructor incheiat"<<endl;
+//    cout<<" Apel destructor incheiat"<<endl;
 }
 
 void ListaSimpluInlantuita::afisareLista(){
@@ -73,7 +73,7 @@ void ListaSimpluInlantuita::afisareLista(){
     else{
         for(aux = this->inceput; aux != NULL; aux = aux->urmator)
         {
-            cout<<"Nodul: "<<aux<<" Informatia: "<<aux->info<<" Urmatorul: "<<aux->urmator<<endl;
+            cout<<"Nodul: "<<aux<<" Informatia: "<<aux->info<<" Inamic: "<<aux->inamic<<" Urmatorul: "<<aux->urmator<<endl;
         }
     }
 }
@@ -206,4 +206,12 @@ void ListaSimpluInlantuita::adaugaNodInainte(NodLS& nod, NodLS& deAdaugat){
                 cout<<"\nNodul nu a putut fi gasit!"<<endl;
         }
 
+}
+
+ListaSimpluInlantuita& ListaSimpluInlantuita::operator= (const ListaSimpluInlantuita& lista){
+    if(this != &lista){
+        this->inceput = lista.inceput;
+        this->sfarsit = lista.sfarsit;
+    }
+    return *this;
 }

@@ -1,11 +1,242 @@
 #include <iostream>
+#include "NodLS.h"
 #include "ListaSimpluInlantuita.h"
+#include "Caracter.h"
+#include "Inamic.h"
+#include <stdlib.h>
+#include <string.h>
+#include "NodAb.h"
+#include "ArboreBinar.h"
+#include "Stiva.h"
 
 using namespace std;
 
+int NodAB::nrNoduri = 1;
+
+void demo1(){
+
+        NodLS n1(NULL, 1), n2(&n1, 2), n3(&n2, 3), n4(&n3, 4), n5(&n4, 5);
+    ListaSimpluInlantuita lista(&n4, &n1);
+    lista.afisareLista();
+    lista.adaugaUltimulNod(n5);
+    lista.afisareLista();
+
+}
+
+void ataca(Caracter&, Inamic&);
+ListaSimpluInlantuita& initCamere(int n);
+void joacaJoc(Caracter&, ListaSimpluInlantuita&);
+char* alegeri(){
+    char* s;
+    cout<<"Ataca: (a)"<<endl;
+
+    cin>>s;
+    char *s1 = new char[strlen(s)+1];
+
+    return s1;
+
+}
+
 int main()
 {
-    ListaSimpluInlantuita *lista = new ListaSimpluInlantuita();
+    int i;
+    Caracter caracterMain;
+    ListaSimpluInlantuita lista;
+    lista = initCamere(4);
+
+
+    joacaJoc(caracterMain, lista);
+
+
+//    NodAB* inceput = ArboreBinar::creareArbore(8);
+//    ArboreBinar arbore(inceput);
+//    cout<<*inceput<<endl;
+//    arbore.afisarePreordine(inceput);
+
+    return 0;
+}
+
+void joacaJoc(Caracter& caracterMain, ListaSimpluInlantuita& lista){
+    char *s;
+    int k=1;
+    NodLS *nodCurent = new NodLS();
+    nodCurent = &lista.getInceput();
+//    nodCurent->afisareNod();
+
+    while(nodCurent != &lista.getSfarsit()){
+
+        while(nodCurent->inamicViu())
+        {
+            cout<<"Caracter: "<<caracterMain<<endl;
+            if(nodCurent->getInamic().getViata() != 0)
+                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+            cout<<"Urmatoarea actiune: "<<endl;
+            cout<<"Ataca: (a)"<<endl;
+            cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+            cin>>s;
+            if(strcmp(s, "a") == 0){
+                system("cls");
+                ataca(caracterMain, nodCurent->getInamic());
+//                cout<<"Caracter: "<<caracterMain<<endl;
+//                if(nodCurent->getInamic().getViata() != 0)
+//                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+            }
+            else if(strcmp(s, "f") == 0){
+                caracterMain.folosestePotiune();
+                cout<<"Mai aveti :"<<caracterMain.getPotiuni()<<" potiuni."<<endl;
+                cout<<"Caracter: "<<caracterMain<<endl;
+                if(nodCurent->getInamic().getViata() != 0)
+                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+            }
+            else{
+                cout<<"Comanda nerecunoscuta!"<<endl;
+            }
+        }
+        cout<<"Inamic infrant!"<<endl;
+        caracterMain.getRucsac()[k-1].setPlante(1);
+        k++;
+        cout<<endl<<"Urmatoarea actiune: "<<endl;
+        cout<<"Afisati cursacul: (ar)"<<endl;
+        cout<<"Inspectati caracterul: (ic)"<<endl;
+        cout<<"Inaintati in camera urmatoare: (i)"<<endl;
+        cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+        cout<<"Craftati potiuni: (c)"<<endl;
+        cin>>s;
+        while(strcmp(s, "i") != 0){
+            if(strcmp(s, "ar") == 0)
+                {
+                    cout<<"Se afiseaza rucsacul! "<<endl;
+                    caracterMain.afisareRucsac();
+                    cout<<endl<<"Urmatoarea actiune: "<<endl;
+                    cout<<"Afisati cursacul: (ar)"<<endl;
+                    cout<<"Inspectati caracterul: (ic)"<<endl;
+                    cout<<"Inaintati in camera urmatoare: (i)"<<endl;
+                    cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+                    cout<<"Craftati potiuni: (c)"<<endl;
+                    cin>>s;
+                }
+            else if(strcmp(s, "ic") == 0)
+                {
+                    cout<<"Se afiseaza caracterul: "<<endl<<caracterMain<<endl;
+                    cout<<"Urmatoarea actiune: "<<endl;
+                    cout<<"Afisati cursacul: (ar)"<<endl;
+                    cout<<"Inspectati caracterul: (ic)"<<endl;
+                    cout<<"Inaintati in camera urmatoare: (i)"<<endl;
+                    cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+                    cout<<"Craftati potiuni: (c)"<<endl;
+                    cin>>s;
+                }
+            else  if(strcmp(s, "f") == 0){
+                caracterMain.folosestePotiune();
+                cout<<"Mai aveti :"<<caracterMain.getPotiuni()<<" potiuni."<<endl;
+                cout<<"Caracter: "<<caracterMain<<endl;
+                cout<<endl<<"Urmatoarea actiune: "<<endl;
+                cout<<"Afisati cursacul: (ar)"<<endl;
+                cout<<"Inspectati caracterul: (ic)"<<endl;
+                cout<<"Inaintati in camera urmatoare: (i)"<<endl;
+                cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+                cout<<"Craftati potiuni: (c)"<<endl;
+                cin>>s;
+            }
+            else if(strcmp(s, "c") == 0){
+                if(caracterMain.getPlante() >= 1)
+                    caracterMain.crafteazaPotiuni();
+                else{cout<<"Nu aveti destule plante!"<<endl;}
+                cout<<endl<<"Urmatoarea actiune: "<<endl;
+                cout<<"Afisati cursacul: (ar)"<<endl;
+                cout<<"Inspectati caracterul: (ic)"<<endl;
+                cout<<"Inaintati in camera urmatoare: (i)"<<endl;
+                cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+                cout<<"Craftati potiuni: (c)"<<endl;
+                cin>>s;
+            }
+            else{
+                cout<<"Comanda necunoscuta!"<<endl;
+                cin>>s;
+            }
+        }
+        if(nodCurent != &lista.getSfarsit())
+            nodCurent = &nodCurent->getUrmator();
+    }
+    cout<<caracterMain<<endl;
+    system("cls");
+    cout<<"Ultima camera! "<<endl;
+     while(nodCurent->inamicViu())
+        {
+            cout<<"Caracter: "<<caracterMain<<endl;
+            if(nodCurent->getInamic().getViata() != 0)
+                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+            cout<<endl<<"Urmatoarea actiune: "<<endl;
+            cout<<"Ataca: (a)"<<endl;
+            cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+            cin>>s;
+            if(strcmp(s, "a") == 0){
+                system("cls");
+                ataca(caracterMain, nodCurent->getInamic());
+//                cout<<"Caracter: "<<caracterMain<<endl;
+//                if(nodCurent->getInamic().getViata() != 0)
+//                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+            }
+            else if(strcmp(s, "f") == 0){
+                caracterMain.folosestePotiune();
+                cout<<"Mai aveti :"<<caracterMain.getPotiuni()<<" potiuni."<<endl;
+            }
+            else{
+                cout<<"Comanda nerecunoscuta!"<<endl;
+            }
+        }
+        cout<<"Inamic infrant!"<<endl;
+        k++;
+}
+
+void ataca(Caracter& caracterMain, Inamic& inamic){
+
+    caracterMain.lvlUp();
+    if(inamic.getViata() > 0)
+    {
+        inamic.setViata(inamic.getViata() - caracterMain.getAtac());
+        if(inamic.getViata() > 0)
+        {
+            caracterMain.setViata(caracterMain.getViata() - inamic.getAtac());
+        }
+        else{
+            caracterMain.setExp(caracterMain.getExp() + inamic.getExp());
+            inamic.setViata(0);
+        }
+    }
+    else{
+        cout<<"Inamicul a fost deja infrant!"<<endl;
+    }
+    caracterMain.lvlUp();
+}
+
+ListaSimpluInlantuita& initCamere(int n){
+    int i;
+    NodLS **camere = new NodLS*[n];
+    camere[n-1] = new NodLS(NULL, n-1);
+    Inamic *inamic = new Inamic[n];
+
+    for(i=n-2; i>=0; i--)
+    {
+        camere[i] = new NodLS(camere[i+1], i);
+    }
+
+    for(i=0; i<=n-1; i++)
+    {
+        inamic[i].setAtac(i*10+10);
+        inamic[i].setViata(100+i*10);
+        inamic[i].setExp(i*10+100);
+        camere[i]->setInamic(inamic[i]);
+    }
+
+    ListaSimpluInlantuita *lista = new ListaSimpluInlantuita(camere[0], camere[n-1]);
+//    lista->afisareLista();
+    return *lista;
+}
+
+void randFunc(){
+
+        ListaSimpluInlantuita *lista = new ListaSimpluInlantuita();
     NodLS *nod1 = new NodLS(NULL, 3);
     NodLS *nod2 = new NodLS(NULL, 4);
     lista->afisareLista();
@@ -65,5 +296,5 @@ int main()
     cout<<"!!!"<<endl;
     lista->afisareLista();
     delete lista;
-    return 0;
+
 }

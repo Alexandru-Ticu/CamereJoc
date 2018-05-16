@@ -22,6 +22,12 @@ public:
     ListaSimpluInlantuita(const ListaSimpluInlantuita &_deCopiat);
 
 
+    NodLS& getInceput(){
+        return *this->inceput;
+    }
+    NodLS& getSfarsit(){
+        return *this->sfarsit;
+    }
     void afisareLista();
 
     void stergePrimulNod();
@@ -36,6 +42,7 @@ public:
     void adaugaNodDupa(NodLS& nod, NodLS& deAdaugat);
     void adaugaNodInainte(NodLS& nod, NodLS& deAdaugat);
 
+    ListaSimpluInlantuita& operator= (const ListaSimpluInlantuita&);
 };
 
 #endif // LISTASIMPLUINLANTUITA_H

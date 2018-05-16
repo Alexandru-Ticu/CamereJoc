@@ -32,10 +32,22 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ArboreBinar.cpp" />
+		<Unit filename="ArboreBinar.h" />
+		<Unit filename="Caracter.cpp" />
+		<Unit filename="Caracter.h" />
+		<Unit filename="Inamic.cpp" />
+		<Unit filename="Inamic.h" />
 		<Unit filename="ListaSimpluInlantuita.cpp" />
 		<Unit filename="ListaSimpluInlantuita.h" />
+		<Unit filename="NodAB.cpp" />
+		<Unit filename="NodAB.h" />
 		<Unit filename="NodLS.cpp" />
 		<Unit filename="NodLS.h" />
+		<Unit filename="NodST.cpp" />
+		<Unit filename="NodST.h" />
+		<Unit filename="Stiva.cpp" />
+		<Unit filename="Stiva.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
