@@ -9,6 +9,7 @@ Caracter::Caracter(){
     this->potiuni = 1;
     this->atac = 40;
     this->viata = 1000;
+    this->maxViata = 1000;
     this->exp = 0;
     this->nivel = 0;
     this->maxExp = 50;
@@ -24,10 +25,12 @@ Caracter::Caracter(){
 
 void Caracter::lvlUp(){
     while(this->exp >= maxExp){
-        this->viata = 1000;
+        this->maxViata += 1000;
+        this->viata = this->maxViata;
+        cout<<"Ati crescut in nivel!"<<endl;
         this->nivel ++;
         this->exp = this->exp - this->maxExp;
-        this->maxExp = this->maxExp + 10;
+        this->maxExp = this->maxExp * 2;
     }
 }
 
@@ -59,7 +62,7 @@ void Caracter::folosestePotiune(){
     else{
         cout<<"Ati folosit o potiune! ";
         this->potiuni--;
-        this->viata += 50;
+        this->viata = this->maxViata;
     }
 }
 
@@ -71,7 +74,6 @@ void Caracter::crafteazaPotiuni(){
         if(this->rucsac[i].getPlante() != 0)
         {
             k++;
-            cout<<"!!: "<<k;
             this->rucsac[i].setPlante(0);
             this->craft.addNod(&rucsac[i]);
         }

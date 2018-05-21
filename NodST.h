@@ -1,12 +1,10 @@
 #ifndef NODST_H
 #define NODST_H
 #include <iostream>
-
 using namespace std;
 
 class NodST
 {
-
     int plante;
     NodST* urmatorul;
 

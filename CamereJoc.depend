@@ -46,7 +46,7 @@
 	"Inamic.h"
 	<iostream>
 
-1526353865 source:c:\users\obby\desktop\asd2\camerejoc-master\main.cpp
+1526945681 source:c:\users\obby\desktop\asd2\camerejoc-master\main.cpp
 	<iostream>
 	"NodLS.h"
 	"ListaSimpluInlantuita.h"
@@ -63,18 +63,18 @@
 	<iostream>
 	"Inamic.h"
 
-1526327270 source:c:\users\obby\desktop\asd2\camerejoc-master\inamic.cpp
+1526943842 source:c:\users\obby\desktop\asd2\camerejoc-master\inamic.cpp
 	"Inamic.h"
 	<iostream>
 
-1526340975 c:\users\obby\desktop\asd2\camerejoc-master\inamic.h
+1526944122 c:\users\obby\desktop\asd2\camerejoc-master\inamic.h
 	<iostream>
 
-1526354072 source:c:\users\obby\desktop\asd2\camerejoc-master\caracter.cpp
+1526945681 source:c:\users\obby\desktop\asd2\camerejoc-master\caracter.cpp
 	"Caracter.h"
 	<iostream>
 
-1526352590 c:\users\obby\desktop\asd2\camerejoc-master\caracter.h
+1526945103 c:\users\obby\desktop\asd2\camerejoc-master\caracter.h
 	<iostream>
 	"NodST.h"
 	"Stiva.h"
@@ -97,7 +97,7 @@
 	"NodAB.h"
 	<iostream>
 
-1526354072 source:c:\users\obby\desktop\asd2\camerejoc-master\stiva.cpp
+1526354217 source:c:\users\obby\desktop\asd2\camerejoc-master\stiva.cpp
 	"Stiva.h"
 
 1526354072 c:\users\obby\desktop\asd2\camerejoc-master\stiva.h
@@ -107,6 +107,6 @@
 	"NodST.h"
 	<iostream>
 
-1526354082 c:\users\obby\desktop\asd2\camerejoc-master\nodst.h
+1526943110 c:\users\obby\desktop\asd2\camerejoc-master\nodst.h
 	<iostream>
 

@@ -7,13 +7,15 @@ Inamic::Inamic(){
     this->viata = 100;
     this->atac = 1;
     this->exp = 10;
+    this->puncte = 10;
 }
 
-Inamic::Inamic(float viata, float atac, int exp)
+Inamic::Inamic(float viata, float atac, int exp, int puncte)
 {
     this->viata = viata;
     this->atac = atac;
     this->exp = exp;
+    this->puncte = puncte;
 }
 
 ostream& operator<<(ostream& out, const Inamic& i){

@@ -9,7 +9,7 @@ using namespace std;
 class Caracter
 {
 protected:
-    float viata, atac;
+    float viata, atac, maxViata;
     int exp, nivel, maxExp, potiuni, nrPlante;
     NodST *rucsac;
     Stiva craft;
@@ -55,6 +55,10 @@ public:
     void crafteazaPotiuni();
 
     int getPlante();
+
+    bool isAlive(){
+        return (this->viata <= 0)?false:true;
+    }
 };
 
 #endif // CARACTER_H

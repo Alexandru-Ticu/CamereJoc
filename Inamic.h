@@ -9,10 +9,11 @@ class Inamic
 private:
     float viata, atac;
     int exp;
+    int puncte;
 
 
 public:
-    Inamic(float, float, int);
+    Inamic(float, float, int, int);
     Inamic();
 
 
@@ -34,6 +35,12 @@ public:
     }
     int getExp(){
         return this->exp;
+    }
+    int getPuncte(){
+        return this->puncte;
+    }
+    void setPuncte(int p){
+        this->puncte = p;
     }
 
     friend ostream& operator<<(ostream&, const Inamic&);

@@ -12,37 +12,18 @@
 using namespace std;
 
 int NodAB::nrNoduri = 1;
-
-void demo1(){
-
-        NodLS n1(NULL, 1), n2(&n1, 2), n3(&n2, 3), n4(&n3, 4), n5(&n4, 5);
-    ListaSimpluInlantuita lista(&n4, &n1);
-    lista.afisareLista();
-    lista.adaugaUltimulNod(n5);
-    lista.afisareLista();
-
-}
+int scor = 0;
 
 void ataca(Caracter&, Inamic&);
 ListaSimpluInlantuita& initCamere(int n);
 void joacaJoc(Caracter&, ListaSimpluInlantuita&);
-char* alegeri(){
-    char* s;
-    cout<<"Ataca: (a)"<<endl;
-
-    cin>>s;
-    char *s1 = new char[strlen(s)+1];
-
-    return s1;
-
-}
 
 int main()
 {
     int i;
     Caracter caracterMain;
     ListaSimpluInlantuita lista;
-    lista = initCamere(4);
+    lista = initCamere(100);
 
 
     joacaJoc(caracterMain, lista);
@@ -65,11 +46,12 @@ void joacaJoc(Caracter& caracterMain, ListaSimpluInlantuita& lista){
 
     while(nodCurent != &lista.getSfarsit()){
 
-        while(nodCurent->inamicViu())
+        while(nodCurent->inamicViu() && caracterMain.isAlive())
         {
+
             cout<<"Caracter: "<<caracterMain<<endl;
             if(nodCurent->getInamic().getViata() != 0)
-                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl<<endl;
             cout<<"Urmatoarea actiune: "<<endl;
             cout<<"Ataca: (a)"<<endl;
             cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
@@ -83,30 +65,59 @@ void joacaJoc(Caracter& caracterMain, ListaSimpluInlantuita& lista){
             }
             else if(strcmp(s, "f") == 0){
                 caracterMain.folosestePotiune();
-                cout<<"Mai aveti :"<<caracterMain.getPotiuni()<<" potiuni."<<endl;
-                cout<<"Caracter: "<<caracterMain<<endl;
-                if(nodCurent->getInamic().getViata() != 0)
-                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+                cout<<"Mai aveti :"<<caracterMain.getPotiuni()<<" potiuni."<<endl<<endl;
+//                cout<<"Caracter: "<<caracterMain<<endl;
+//                if(nodCurent->getInamic().getViata() != 0)
+//                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
             }
             else{
                 cout<<"Comanda nerecunoscuta!"<<endl;
             }
+
         }
-        cout<<"Inamic infrant!"<<endl;
-        caracterMain.getRucsac()[k-1].setPlante(1);
-        k++;
-        cout<<endl<<"Urmatoarea actiune: "<<endl;
-        cout<<"Afisati cursacul: (ar)"<<endl;
-        cout<<"Inspectati caracterul: (ic)"<<endl;
-        cout<<"Inaintati in camera urmatoare: (i)"<<endl;
-        cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
-        cout<<"Craftati potiuni: (c)"<<endl;
-        cin>>s;
-        while(strcmp(s, "i") != 0){
-            if(strcmp(s, "ar") == 0)
-                {
-                    cout<<"Se afiseaza rucsacul! "<<endl;
-                    caracterMain.afisareRucsac();
+        if(!caracterMain.isAlive()){
+                break;
+            }
+        else{
+            cout<<"Inamic infrant!"<<endl;
+            caracterMain.getRucsac()[k-1].setPlante(1);
+            k++;
+            scor = nodCurent->getInamic().getPuncte();
+            cout<<endl<<"Urmatoarea actiune: "<<endl;
+            cout<<"Afisati cursacul: (ar)"<<endl;
+            cout<<"Inspectati caracterul: (ic)"<<endl;
+            cout<<"Inaintati in camera urmatoare: (i)"<<endl;
+            cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+            cout<<"Craftati potiuni: (c)"<<endl;
+            cin>>s;
+            while(strcmp(s, "i") != 0){
+                if(strcmp(s, "ar") == 0)
+                    {
+                        cout<<"Se afiseaza rucsacul! "<<endl;
+                        caracterMain.afisareRucsac();
+                        cout<<endl<<"Urmatoarea actiune: "<<endl;
+                        cout<<"Afisati cursacul: (ar)"<<endl;
+                        cout<<"Inspectati caracterul: (ic)"<<endl;
+                        cout<<"Inaintati in camera urmatoare: (i)"<<endl;
+                        cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+                        cout<<"Craftati potiuni: (c)"<<endl;
+                        cin>>s;
+                    }
+                else if(strcmp(s, "ic") == 0)
+                    {
+                        cout<<"Se afiseaza caracterul: "<<endl<<caracterMain<<endl;
+                        cout<<endl<<"Urmatoarea actiune: "<<endl;
+                        cout<<"Afisati cursacul: (ar)"<<endl;
+                        cout<<"Inspectati caracterul: (ic)"<<endl;
+                        cout<<"Inaintati in camera urmatoare: (i)"<<endl;
+                        cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+                        cout<<"Craftati potiuni: (c)"<<endl;
+                        cin>>s;
+                    }
+                else  if(strcmp(s, "f") == 0){
+                    caracterMain.folosestePotiune();
+                    cout<<endl<<"Mai aveti :"<<caracterMain.getPotiuni()<<" potiuni."<<endl;
+                    cout<<"Caracter: "<<caracterMain<<endl;
                     cout<<endl<<"Urmatoarea actiune: "<<endl;
                     cout<<"Afisati cursacul: (ar)"<<endl;
                     cout<<"Inspectati caracterul: (ic)"<<endl;
@@ -115,10 +126,11 @@ void joacaJoc(Caracter& caracterMain, ListaSimpluInlantuita& lista){
                     cout<<"Craftati potiuni: (c)"<<endl;
                     cin>>s;
                 }
-            else if(strcmp(s, "ic") == 0)
-                {
-                    cout<<"Se afiseaza caracterul: "<<endl<<caracterMain<<endl;
-                    cout<<"Urmatoarea actiune: "<<endl;
+                else if(strcmp(s, "c") == 0){
+                    if(caracterMain.getPlante() > 1)
+                        caracterMain.crafteazaPotiuni();
+                    else{cout<<"Nu aveti destule plante!"<<endl;}
+                    cout<<endl<<"Urmatoarea actiune: "<<endl;
                     cout<<"Afisati cursacul: (ar)"<<endl;
                     cout<<"Inspectati caracterul: (ic)"<<endl;
                     cout<<"Inaintati in camera urmatoare: (i)"<<endl;
@@ -126,73 +138,67 @@ void joacaJoc(Caracter& caracterMain, ListaSimpluInlantuita& lista){
                     cout<<"Craftati potiuni: (c)"<<endl;
                     cin>>s;
                 }
-            else  if(strcmp(s, "f") == 0){
-                caracterMain.folosestePotiune();
-                cout<<"Mai aveti :"<<caracterMain.getPotiuni()<<" potiuni."<<endl;
-                cout<<"Caracter: "<<caracterMain<<endl;
-                cout<<endl<<"Urmatoarea actiune: "<<endl;
-                cout<<"Afisati cursacul: (ar)"<<endl;
-                cout<<"Inspectati caracterul: (ic)"<<endl;
-                cout<<"Inaintati in camera urmatoare: (i)"<<endl;
-                cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
-                cout<<"Craftati potiuni: (c)"<<endl;
-                cin>>s;
-            }
-            else if(strcmp(s, "c") == 0){
-                if(caracterMain.getPlante() >= 1)
-                    caracterMain.crafteazaPotiuni();
-                else{cout<<"Nu aveti destule plante!"<<endl;}
-                cout<<endl<<"Urmatoarea actiune: "<<endl;
-                cout<<"Afisati cursacul: (ar)"<<endl;
-                cout<<"Inspectati caracterul: (ic)"<<endl;
-                cout<<"Inaintati in camera urmatoare: (i)"<<endl;
-                cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
-                cout<<"Craftati potiuni: (c)"<<endl;
-                cin>>s;
-            }
-            else{
-                cout<<"Comanda necunoscuta!"<<endl;
-                cin>>s;
+                else{
+                    cout<<"Comanda necunoscuta!"<<endl;
+                    cin>>s;
+                }
             }
         }
+        system("cls");
+            if(!caracterMain.isAlive()){
+                break;
+            }
         if(nodCurent != &lista.getSfarsit())
             nodCurent = &nodCurent->getUrmator();
     }
-    cout<<caracterMain<<endl;
-    system("cls");
-    cout<<"Ultima camera! "<<endl;
-     while(nodCurent->inamicViu())
-        {
-            cout<<"Caracter: "<<caracterMain<<endl;
-            if(nodCurent->getInamic().getViata() != 0)
-                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
-            cout<<endl<<"Urmatoarea actiune: "<<endl;
-            cout<<"Ataca: (a)"<<endl;
-            cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
-            cin>>s;
-            if(strcmp(s, "a") == 0){
-                system("cls");
-                ataca(caracterMain, nodCurent->getInamic());
-//                cout<<"Caracter: "<<caracterMain<<endl;
-//                if(nodCurent->getInamic().getViata() != 0)
-//                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+    if(!caracterMain.isAlive()){
+        cout<<"Ati fost infrant!"<<endl;
+        cout<<"Scor: "<<scor<<endl;
+    }else{
+        cout<<caracterMain<<endl;
+        system("cls");
+        cout<<"Ultima camera! "<<endl;
+         while(nodCurent->inamicViu() && caracterMain.isAlive())
+            {
+                cout<<"Caracter: "<<caracterMain<<endl;
+                if(nodCurent->getInamic().getViata() != 0)
+                        cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+                cout<<endl<<"Urmatoarea actiune: "<<endl;
+                cout<<"Ataca: (a)"<<endl;
+                cout<<"Foloseste potiune ("<<caracterMain.getPotiuni()<<" potiuni): (f)"<<endl;
+                cin>>s;
+                if(strcmp(s, "a") == 0){
+                    system("cls");
+                    ataca(caracterMain, nodCurent->getInamic());
+    //                cout<<"Caracter: "<<caracterMain<<endl;
+    //                if(nodCurent->getInamic().getViata() != 0)
+    //                    cout<<"(Inamic "<<k<<") "<<nodCurent->getInamic()<<endl;
+                }
+                else if(strcmp(s, "f") == 0){
+                    system("cls");
+                    caracterMain.folosestePotiune();
+                    cout<<"Mai aveti :"<<caracterMain.getPotiuni()<<" potiuni."<<endl;
+                }
+                else{
+                    cout<<"Comanda nerecunoscuta!"<<endl;
+                }
             }
-            else if(strcmp(s, "f") == 0){
-                caracterMain.folosestePotiune();
-                cout<<"Mai aveti :"<<caracterMain.getPotiuni()<<" potiuni."<<endl;
+            if(!caracterMain.isAlive()){
+                cout<<"Ati fost infrant!"<<endl;
+                cout<<"Scor: "<<scor<<endl;
             }
             else{
-                cout<<"Comanda nerecunoscuta!"<<endl;
+                cout<<"Inamic infrant!"<<endl;
+                k++;
+                cout<<"Scor: "<<scor<<endl;
             }
-        }
-        cout<<"Inamic infrant!"<<endl;
-        k++;
+    }
 }
 
 void ataca(Caracter& caracterMain, Inamic& inamic){
 
     caracterMain.lvlUp();
-    if(inamic.getViata() > 0)
+    if(inamic.getViata() > 0 && caracterMain.isAlive())
     {
         inamic.setViata(inamic.getViata() - caracterMain.getAtac());
         if(inamic.getViata() > 0)
@@ -204,8 +210,11 @@ void ataca(Caracter& caracterMain, Inamic& inamic){
             inamic.setViata(0);
         }
     }
-    else{
+    else if(inamic.getViata() <= 0){
         cout<<"Inamicul a fost deja infrant!"<<endl;
+    }else if(!caracterMain.isAlive()){
+        cout<<"Ati fost infrant!";
+        cout<<"Scorul: "<<scor<<endl;
     }
     caracterMain.lvlUp();
 }
@@ -223,9 +232,10 @@ ListaSimpluInlantuita& initCamere(int n){
 
     for(i=0; i<=n-1; i++)
     {
-        inamic[i].setAtac(i*10+10);
+        inamic[i].setAtac(i*100+10);
         inamic[i].setViata(100+i*10);
-        inamic[i].setExp(i*10+100);
+        inamic[i].setExp(i*10 + 25);
+        inamic[i].setPuncte(i*10+100);
         camere[i]->setInamic(inamic[i]);
     }
 
@@ -233,6 +243,7 @@ ListaSimpluInlantuita& initCamere(int n){
 //    lista->afisareLista();
     return *lista;
 }
+
 
 void randFunc(){
 
