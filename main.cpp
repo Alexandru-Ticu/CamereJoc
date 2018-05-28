@@ -8,11 +8,14 @@
 #include "NodAb.h"
 #include "ArboreBinar.h"
 #include "Stiva.h"
-
+#include "Heap.h"
+#include "fstream"
+#include "conio.h"
 using namespace std;
 
 int NodAB::nrNoduri = 1;
-int scor = 0;
+int scor = 0, nrJucatori;
+
 
 void ataca(Caracter&, Inamic&);
 ListaSimpluInlantuita& initCamere(int n);
@@ -20,19 +23,40 @@ void joacaJoc(Caracter&, ListaSimpluInlantuita&);
 
 int main()
 {
-    int i;
-    Caracter caracterMain;
-    ListaSimpluInlantuita lista;
-    lista = initCamere(100);
+    Heap<int> heap;
+    fstream fisier("Jucatori.txt");
+    fisier >> nrJucatori;
+    string nume;
+    int scorNume;
+    for(int i=1; i<= nrJucatori; i++)
+    {
+        fisier>>nume;
+        fisier>>scorNume;
+        heap.insert(scorNume, nume);
+    }
 
+    cout<<"Numele dumneavoastra: ";
+    cin>>nume;
+    cout<<"..."<<endl;
+    getch();
 
-    joacaJoc(caracterMain, lista);
+//    Caracter caracterMain;
+//    ListaSimpluInlantuita lista;
+//    lista = initCamere(100);
+//
+//    joacaJoc(caracterMain, lista);
 
+    nrJucatori++;
+    heap.insert(scor, nume);
+    fisier << nume << " "<<scor<<endl;
+    fisier.seekp(0);
+    fisier << nrJucatori << endl;
 
-//    NodAB* inceput = ArboreBinar::creareArbore(8);
-//    ArboreBinar arbore(inceput);
-//    cout<<*inceput<<endl;
-//    arbore.afisarePreordine(inceput);
+    cout<<endl<<"\nScorurile in ordine crescatoare:"<<endl;
+  while(heap.getSize() > 0)
+	cout<< heap.remove()<<endl;
+
+    fisier.close();
 
     return 0;
 }

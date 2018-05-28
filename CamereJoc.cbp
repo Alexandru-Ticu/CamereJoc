@@ -36,8 +36,11 @@
 		<Unit filename="ArboreBinar.h" />
 		<Unit filename="Caracter.cpp" />
 		<Unit filename="Caracter.h" />
+		<Unit filename="Heap.cpp" />
+		<Unit filename="Heap.h" />
 		<Unit filename="Inamic.cpp" />
 		<Unit filename="Inamic.h" />
+		<Unit filename="Jucatori.txt" />
 		<Unit filename="ListaSimpluInlantuita.cpp" />
 		<Unit filename="ListaSimpluInlantuita.h" />
 		<Unit filename="NodAB.cpp" />

@@ -46,7 +46,7 @@
 	"Inamic.h"
 	<iostream>
 
-1526945681 source:c:\users\obby\desktop\asd2\camerejoc-master\main.cpp
+1527549713 source:c:\users\obby\desktop\asd2\camerejoc-master\main.cpp
 	<iostream>
 	"NodLS.h"
 	"ListaSimpluInlantuita.h"
@@ -57,6 +57,9 @@
 	"NodAb.h"
 	"ArboreBinar.h"
 	"Stiva.h"
+	"Heap.h"
+	"fstream"
+	"conio.h"
 
 1526331402 source:c:\users\obby\desktop\asd2\camerejoc-master\nodls.cpp
 	"NodLS.h"
@@ -109,4 +112,11 @@
 
 1526943110 c:\users\obby\desktop\asd2\camerejoc-master\nodst.h
 	<iostream>
+
+1527546933 source:c:\users\obby\desktop\asd2\camerejoc-master\heap.cpp
+
+1527548936 c:\users\obby\desktop\asd2\camerejoc-master\heap.h
+	<iostream>
+	<vector>
+	<string>
 
